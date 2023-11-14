@@ -3,6 +3,48 @@ function App() {
   return (
     <>
       <div className="wrapper clear">
+       
+        <div className="overlay">
+          <div className="drawer">
+            <h3>Корзина</h3>
+
+            <div className="items">
+                <div className="cartItem d-flex align-center mb-20">
+                  <div className="cartItemImg"></div>
+                  <div className="mr-20">
+                    <p className="mb-5">Lorem ipsum dolor sit amet lorem.</p>
+                    <b>12 999 руб</b>
+                  </div>
+                  <img className="removeBtn" src="/public/img/btn-remove.svg" alt="Remove"/>
+                </div>
+
+                <div className="cartItem d-flex align-center mb-20">
+                  <div className="cartItemImg"></div>
+                  <div className="mr-20">
+                    <p className="mb-5">Lorem ipsum dolor sit amet lorem.</p>
+                    <b>12 999 руб</b>
+                  </div>
+                  <img className="removeBtn" src="/public/img/btn-remove.svg" alt="Remove"/>
+                </div>
+            </div>
+
+
+            <ul className="cartTotalBlock">
+              <li className="d-flex">
+                <span>Итого:</span>
+                <div></div>
+                <b>21 498 руб.</b>
+              </li>
+              <li className="d-flex">
+                <span>Налог 5%:</span>
+                <div></div>
+                <b>1074 руб.</b>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
         <header className="d-flex justify-between align-center p-40">
           <div className="d-flex align-center">
            <img src="/img/logo.png" alt="Logo" width={40} height={40} />
@@ -32,7 +74,10 @@ function App() {
           </div>
 
             <div className="d-flex">
-            <div className="card m-30">
+            <div className="card">
+              <div className="foverite">
+                <img src="/public/img/unliked.svg" alt="Likes" />
+              </div>
               <img width={133} height={112} src="/public/img/sneakers/1.jpg" alt="1" />
               <p>Lorem, ipsum dolor sit amet consectetur.</p>
               <div className="d-flex justify-between align-center">
@@ -47,7 +92,7 @@ function App() {
             </div>
             {/* card end */}
 
-            <div className="card m-30">
+            <div className="card">
               <img width={133} height={112} src="/public/img/sneakers/2.jpg" alt="1" />
               <p>Lorem, ipsum dolor sit amet consectetur.</p>
               <div className="d-flex justify-between align-center">
@@ -61,7 +106,7 @@ function App() {
               </div>
             </div>
             {/* card end */}
-            <div className="card m-30">
+            <div className="card">
               <img width={133} height={112} src="/public/img/sneakers/3.jpg" alt="1" />
               <p>Lorem, ipsum dolor sit amet consectetur.</p>
               <div className="d-flex justify-between align-center">
@@ -75,7 +120,7 @@ function App() {
               </div>
             </div>
             {/* card end */}
-            <div className="card m-30">
+            <div className="card">
               <img width={133} height={112} src="/public/img/sneakers/4.jpg" alt="1" />
               <p>Lorem, ipsum dolor sit amet consectetur.</p>
               <div className="d-flex justify-between align-center">
