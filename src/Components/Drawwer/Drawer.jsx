@@ -1,6 +1,6 @@
-import React from "react";
 
-function Drawer(props) {
+
+function Drawer() {
   return (
     <>
       <div style={{ display: "none" }} className="overlay ">
