@@ -1,41 +1,40 @@
+import { useEffect, useState } from "react";
 import Cart from "./Components/Card/Cart";
 import Drawer from "./Components/Drawwer/Drawer";
 import Header from "./Components/Header/Header";
 
-const arr = [
-            {
-              name: "Мужские Кроссовки Nike Blazer Mid Suede",
-              price: 12999,
-              imagUrl: "/public/img/sneakers/1.jpg",
-            },
-            {
-              name: "Мужские Кроссовки Nike Air Max 270",
-              price: 12999,
-              imagUrl: "/public/img/sneakers/2.jpg",
-            },
-            {
-              name: "Мужские Кроссовки Nike Blazer Mid Suede",
-              price: 8499,
-              imagUrl: "/public/img/sneakers/3.jpg",
-            },
-            {
-              name: "Кроссовки Puma X Aka Boku Future Rider",
-              price: 8499,
-              imagUrl: "/public/img/sneakers/4.jpg",
-            },
-            {
-              name: "Мужские Кроссовки Under Armour Curry 8",
-              price: 15199,
-              imagUrl: "/public/img/sneakers/5.jpg",
-            },
-];
-
 function App() {
+  const [arrItems, setArrItems] = useState([]);
+  const [cardItems, setCardItems] = useState([
+    {
+      name: "Мужские Кроссовки Nike Blazer Mid Suede",
+      price: 12999,
+      imagUrl: "/public/img/sneakers/1.jpg",
+    },
+    {
+      name: "Мужские Кроссовки Nike Air Max 270",
+      price: 12999,
+      imagUrl: "/public/img/sneakers/2.jpg",
+    },
+  ]);
+  const [cartOpen, setCartOpene] = useState(false);
+
+  useEffect(() => {
+    fetch("https://628f1fb10e69410599d594c8.mockapi.io/items")
+      .then((res) => {
+        return res.json();
+      })
+
+      .then((json) => {
+        setArrItems(json);
+      });
+  }, []);
+
   return (
     <>
       <div className="wrapper clear">
-        <Drawer />
-        <Header />
+        {cartOpen && <Drawer onClosCart={() => setCartOpene(false)} />}
+        <Header onClickCart={() => setCartOpene(true)} />
 
         <div className="content p-40">
           <div className="d-flex align-center justify-between mb-40">
@@ -46,12 +45,14 @@ function App() {
             </div>
           </div>
 
-          <div className="d-flex">
-            {arr.map((item) => (
-              <Cart 
-                  title={item.name}
-                  price={item.price}
-                  imagUrl={item.imagUrl}  
+          <div className="d-flex flex-wrap">
+            {arrItems.map((item) => (
+              <Cart
+                title={item.name}
+                price={item.price}
+                imagUrl={item.imagUrl}
+                onPlus={() => console.log(`qo'shihs`)}
+                onFeverit={() => console.log(`zo'r`)}
               />
             ))}
           </div>
