@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./Cart.moduls.scss";
 
-function Cart(props) {
+function Cart({ imagUrl, title, price, onFeverit, onPlus }) {
   const [isAaded, setIsAdaded] = useState(false);
 
   const onClickPlus = () => {
+    onPlus({ imagUrl, title, price });
     setIsAdaded(!isAaded);
   };
 
@@ -16,15 +17,15 @@ function Cart(props) {
   return (
     <>
       <div className="card">
-        <div className="foverite" onClick={props.onFeverit}>
+        <div className="foverite" onClick={onFeverit}>
           <img src="/public/img/unliked.svg" alt="Likes" />
         </div>
-        <img width={133} height={112} src={props.imagUrl} alt="1" />
-        <p>{props.title}</p>
+        <img width={133} height={112} src={imagUrl} alt="1" />
+        <p>{title}</p>
         <div className="d-flex justify-between align-center">
           <div className="d-flex flex-column">
             <span>цена:</span>
-            <b>{props.price} руб</b>
+            <b>{price} руб</b>
           </div>
           <img
             className="plus"

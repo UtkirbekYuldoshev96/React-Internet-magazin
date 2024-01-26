@@ -15,10 +15,10 @@ function Drawer({ onClosCart, arrItems = [] }) {
           <div className="items">
             {arrItems.map((obj) => (
               <div className="cartItem d-flex align-center mb-20">
-                <div className="cartItemImg"></div>
+                <div style={{backgroundImage: `url(${obj.imagUrl})`}} className="cartItemImg"></div>
                 <div className="mr-20">
-                  <p className="mb-5">Lorem ipsum dolor sit amet lorem.</p>
-                  <b>12 999 руб</b>
+                  <p className="mb-5">{obj.name}</p>
+                  <b>{obj.price} руб</b>
                 </div>
                 <img
                   className="removeBtn"

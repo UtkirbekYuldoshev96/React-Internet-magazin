@@ -5,18 +5,7 @@ import Header from "./Components/Header/Header";
 
 function App() {
   const [arrItems, setArrItems] = useState([]);
-  const [cardItems, setCardItems] = useState([
-    {
-      name: "Мужские Кроссовки Nike Blazer Mid Suede",
-      price: 12999,
-      imagUrl: "/public/img/sneakers/1.jpg",
-    },
-    {
-      name: "Мужские Кроссовки Nike Air Max 270",
-      price: 12999,
-      imagUrl: "/public/img/sneakers/2.jpg",
-    },
-  ]);
+  const [cardItems, setCardItems] = useState([]);
   const [cartOpen, setCartOpene] = useState(false);
 
   useEffect(() => {
@@ -30,10 +19,15 @@ function App() {
       });
   }, []);
 
+
+  const onAddToCard = (obj) => {
+    setCardItems(prev => [...cardItems, obj]);
+  }
+
   return (
     <>
       <div className="wrapper clear">
-        {cartOpen && <Drawer onClosCart={() => setCartOpene(false)} />}
+        {cartOpen && <Drawer arrItems={cardItems} onClosCart={() => setCartOpene(false)} />}
         <Header onClickCart={() => setCartOpene(true)} />
 
         <div className="content p-40">
@@ -51,7 +45,7 @@ function App() {
                 title={item.name}
                 price={item.price}
                 imagUrl={item.imagUrl}
-                onPlus={() => console.log(`qo'shihs`)}
+                onPlus={(obj) => onAddToCard(item)}
                 onFeverit={() => console.log(`zo'r`)}
               />
             ))}
